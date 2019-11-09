@@ -179,8 +179,8 @@ basic_optimization(){
 port_alterid_set(){
     read -p "请输入连接端口（default:443）:" port
     [[ -z ${port} ]] && port="443"
-    read -p "请输入alterID（default:4）:" alterID
-    [[ -z ${alterID} ]] && alterID="4"
+    read -p "请输入alterID（default:64）:" alterID
+    [[ -z ${alterID} ]] && alterID="64"
 }
 modify_port_UUID(){
     let PORT=$RANDOM+10000
@@ -448,7 +448,6 @@ EOF
 
     vmess_link="vmess://$(cat /etc/v2ray/vmess_qr.json | base64 -w 0)"
     echo -e "${Red} URL导入链接:${vmess_link} ${Font}" >>./v2ray_info.txt
-    echo -e "${Red} 二维码: ${Font}" >>./v2ray_info.txt
     echo "${vmess_link}"| qrencode -o - -t utf8 >>./v2ray_info.txt
 }
 
